@@ -1,4 +1,3 @@
-
 import os
 from flask import (
     Flask, flash, render_template,
@@ -22,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
-    tasks = mongo.db.tasks.find()
+    tasks = list(mongo.db.tasks.find())
     return render_template("tasks.html", tasks=tasks)
 
 
